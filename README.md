@@ -3,11 +3,11 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?  
-A: *Student should provide answer here*
+A: In each unit, if there are two boxes that share the same candidates of length 2, then it's known for sure that these two digits, call them digit X, Y, will occupy both boxes. The only unknown is which box gets assigned which digit. For every naked twins, there are two boxes, call them box A and box B. Let set A be the peers belonging to box A and set B be the peers beloning to box B. Set C is the set intersection of set A and set B. Now the constraint will propagate in set C by removing digit X and Y from the correponding candidates in each boxes in set C.
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
-A: *Student should provide answer here*
+A: Two additional constriant units are added, which is the diagonal and anti-diagonal units. This addtional constriant will then be propagated during the reduce steps, where eliminate, only_choice and naked_twins will enforce these addtional contriants.
 
 ### Install
 
