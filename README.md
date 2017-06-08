@@ -7,7 +7,7 @@ A: In each unit, if there are two boxes that share the same candidates of length
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
-A: Two additional constriant units are added, which is the diagonal and anti-diagonal units. This addtional constriant will then be propagated during the reduce steps, where eliminate, only_choice and naked_twins will enforce these addtional contriants.
+A: Two additional constriant units are added, the diagonal constriant and anti-diagonal constriant, which restrict the assignment along the unit to be a permutation of digits 1 to 9, without repeatition. The problem solving involves applying constriant propagation and backtracking recursively. First, the problem will be reduced by propagating the constriants in three ways. Eliminate: go through every box and if there is a box containing an complete assignment (with only 1 digit in its domain), this digit can be eliminated from the domains of its peers. Only Choice: go throught every box in each unit, if there is a digit that only appears once, the corresponding box is solved automatically. Naked Twins: as described in Q1 above. Next, the heuristic selects a box with the least number of available digits in its domain, this helps pruning the search tree early. After the constriant propagation step (reduce), the algorithm will check to see if there is a box with empty value, which implies an invalid solution. If there is an invalid step, return false and the caller will backtrack by trying another assignment. Recursively applying the recursive backtracking algorithm (constriant propagation + search) in a depth first search manner until the problem is solved.
 
 ### Install
 
